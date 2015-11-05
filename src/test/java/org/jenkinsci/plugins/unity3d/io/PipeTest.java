@@ -15,6 +15,7 @@ import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.util.concurrent.ExecutionException;
 
+import org.jenkinsci.remoting.RoleChecker;
 import org.jvnet.hudson.test.HudsonTestCase;
 /**
  * This test was written to find a solution to the piping issue.
@@ -85,5 +86,11 @@ public class PipeTest extends HudsonTestCase implements Serializable {
             out.close();
             return "DONE";
         }
+
+		@Override
+		public void checkRoles(RoleChecker arg0) throws SecurityException {
+			// TODO Auto-generated method stub
+			
+		}
     }
 }

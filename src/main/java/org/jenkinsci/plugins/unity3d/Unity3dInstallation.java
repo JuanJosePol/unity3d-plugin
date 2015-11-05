@@ -17,6 +17,7 @@ import hudson.tools.ToolInstaller;
 import hudson.tools.ToolProperty;
 import hudson.util.FormValidation;
 import org.jenkinsci.plugins.unity3d.io.PipeFileAfterModificationAction;
+import org.jenkinsci.remoting.RoleChecker;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.QueryParameter;
 
@@ -64,6 +65,12 @@ public class Unity3dInstallation
             public String call() throws IOException {
                 return checkUnity3dExecutablePath(getHome());
             }
+
+			@Override
+			public void checkRoles(RoleChecker arg0) throws SecurityException {
+				// TODO Auto-generated method stub
+				
+			}
         });
     }
 
@@ -133,6 +140,12 @@ public class Unity3dInstallation
             public Long call() throws IOException {
                 return new PipeFileAfterModificationAction(getEditorLogFile(customLogFile).getAbsolutePath(), ros, true).call();
             }
+
+			@Override
+			public void checkRoles(RoleChecker arg0) throws SecurityException {
+				// TODO Auto-generated method stub
+				
+			}
         });
     }
 
@@ -148,6 +161,12 @@ public class Unity3dInstallation
             public String call() throws IOException {
                 return getEditorLogFile(customLogFile).getAbsolutePath();
             }
+
+			@Override
+			public void checkRoles(RoleChecker arg0) throws SecurityException {
+				// TODO Auto-generated method stub
+				
+			}
         });
     }
 
