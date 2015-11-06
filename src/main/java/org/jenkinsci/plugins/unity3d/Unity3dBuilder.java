@@ -309,14 +309,22 @@ public class Unity3dBuilder extends Builder {
         }
 
         public FormValidation doCheckUnstableReturnCodes(@QueryParameter String value) {
-            try {
-                toIntegerSet(value);
-                return FormValidation.ok();
-            } catch (RuntimeException re) {
-                return FormValidation.error(Messages.Unity3d_InvalidParamUnstableReturnCodes(value));
-            }
+        	if (isUnstableReturnCodesParsable(value)) {
+        		return FormValidation.ok();
+        	} else {
+        		return FormValidation.error(Messages.Unity3d_InvalidParamUnstableReturnCodes(value));
+        	}
         }
 
+        public boolean isUnstableReturnCodesParsable(String value) {
+        	try {
+	        	toIntegerSet(value);
+	        	return true;
+        	} catch (RuntimeException re) {
+        		return false;
+        	}
+        }
+        
         public String getGlobalArgLine() {
             return globalArgLine;
         }
