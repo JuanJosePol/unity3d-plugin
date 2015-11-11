@@ -16,7 +16,7 @@ public class Unity3dBuilderDSLExtension extends ContextExtensionPoint {
 	
 	@DslExtensionMethod(context = StepContext.class)
 	public Object unity3d(String unity3dName, String argLine) {
-		return new Unity3dBuilder(unity3dName, argLine, "no unstable return codes");
+		return new Unity3dBuilder(unity3dName, argLine, null);
 	}
 	
 	@DslExtensionMethod(context = StepContext.class)
